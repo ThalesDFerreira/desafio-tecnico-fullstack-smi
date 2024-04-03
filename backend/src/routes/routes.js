@@ -7,6 +7,11 @@ const {
   updatePostsControllers,
 } = require('../controllers/postsControllers');
 
+const {
+  bodyInsertPostsValidation,
+  bodyUpdatePostsValidation,
+} = require('../middlewares/validations');
+
 router.get('/', (req, res) => {
   try {
     return res.status(status.OK).json({
@@ -21,9 +26,8 @@ router.get('/', (req, res) => {
 
 // ROTAS DE DEMANDAS "LATINHAS LLC".
 router.get('/posts', getPostsControllers);
-router.post('/posts', insertPostsControllers);
-router.put('/posts', updatePostsControllers);
-// router.put('/posts', bodyPostsValidation, updatePostsControllers);
+router.post('/posts', bodyInsertPostsValidation, insertPostsControllers);
+router.put('/posts', bodyUpdatePostsValidation, updatePostsControllers);
 // router.delete('/posts', deletePostsControllers);
 
 module.exports = router;
