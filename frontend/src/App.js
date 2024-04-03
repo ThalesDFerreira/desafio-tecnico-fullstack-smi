@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import ListDemands from './pages/CadastroClientes';
-import AddDemand from './pages/VisitarClientes';
+// import ListDemands from './pages/CadastroClientes';
+// import AddDemand from './pages/VisitarClientes';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 
@@ -12,8 +12,8 @@ const App = () => {
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route exact path='/' element={<Navigate to='/home' />} />
-        <Route path='/lista-demandas' element={<ListDemands />} />
-        <Route path='/add-demanda' element={<AddDemand />} />
+        {/* <Route path='/lista-demandas' element={<ListDemands />} />
+        <Route path='/add-demanda' element={<AddDemand />} /> */}
       </Routes>
     </>
   );
