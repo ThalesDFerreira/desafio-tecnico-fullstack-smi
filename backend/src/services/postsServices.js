@@ -1,44 +1,30 @@
-
-
-
-
-const fs = require('fs');
-const path = require('path');
-console.log(db);
-
-// let DATA_BASE = arrayDB;
+const { openDb } = require('../db/configDB');
 
 const getPostsServices = async () => {
-  const result = DATA_BASE;
-  return result;
+  const db = await openDb();
+  const getPosts = await db.all('SELECT * FROM posts');
+  await db.close();
+  return getPosts;
 };
 
 const insertPostsServices = async (req) => {
-  // Usando o método reduce para encontrar o maior ID
-  let lastId = DATA_BASE.reduce((maxId, post) => {
-    return Math.max(maxId, post.id);
-  }, 0);
-  console.log(lastId);
-  // const result = [...DATA_BASE, { id: lastId + 1, demand: req.body.demand }];
-  const result = [...DATA_BASE, { id: lastId + 1, demand: 'a' }];
-  DATA_BASE = result;
-  const filePathDB = path.join(__dirname, '..', 'db', 'db.js');
-
-  const arrayString = JSON.stringify(DATA_BASE);
-
-  fs.writeFile(filePathDB, arrayString, (err) => {
-    if (err) {
-      console.error('Ocorreu um erro ao escrever no arquivo:', err);
-      return;
-    }
-    console.log('Os dados foram gravados com sucesso no arquivo:', filePathDB);
-  });
-  return DATA_BASE;
+  const db = await openDb();
+  const insertPosts = await db.run('INSERT INTO posts(demand) VALUES (?)', [
+    req.body.demand,
+  ]);
+  await db.close();
+  return insertPosts;
 };
 
-// insertPostsServices();
+const updatePostsServices = async (req) => {
+  const db = await openDb();
+  const updatePosts = await db.run('UPDATE posts SET demand=? WHERE id=?', [req.body.demand, req.body.id]);
+  await db.close();
+  return updatePosts;
+};
 
 module.exports = {
   getPostsServices,
   insertPostsServices,
+  updatePostsServices,
 };

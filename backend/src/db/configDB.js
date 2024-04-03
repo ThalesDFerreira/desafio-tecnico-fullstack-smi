@@ -10,12 +10,12 @@ const openDb = async () => {
 
 const createTable = async () => {
   try {
-    const result = await openDb().then((db) => {
-      db.exec(
-        'CREATE TABLE IF NOT EXISTS posts( id INTEGER PRIMARY KEY AUTOINCREMENT, demand TEXT)'
-      );
-    });
-    return result;
+    const openDBPromise = await openDb();
+    const createTable = await openDBPromise.exec(
+      'CREATE TABLE IF NOT EXISTS posts( id INTEGER PRIMARY KEY AUTOINCREMENT, demand TEXT)'
+    );
+    await openDBPromise.close();
+    return createTable;
   } catch (error) {
     console.log(error.message);
   }

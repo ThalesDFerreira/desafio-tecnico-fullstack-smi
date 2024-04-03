@@ -1,6 +1,12 @@
 const router = require('express').Router();
 const status = require('http-status');
 
+const {
+  getPostsControllers,
+  insertPostsControllers,
+  updatePostsControllers,
+} = require('../controllers/postsControllers');
+
 router.get('/', (req, res) => {
   try {
     return res.status(status.OK).json({
@@ -14,9 +20,10 @@ router.get('/', (req, res) => {
 });
 
 // ROTAS DE DEMANDAS "LATINHAS LLC".
-// router.get('/posts', getPostsControllers);
-// router.post('/posts', bodyPostsValidation, insertPostsControllers);
-// router.put('/posts', bodyPostsValidation, editPostsControllers);
+router.get('/posts', getPostsControllers);
+router.post('/posts', insertPostsControllers);
+router.put('/posts', updatePostsControllers);
+// router.put('/posts', bodyPostsValidation, updatePostsControllers);
 // router.delete('/posts', deletePostsControllers);
 
 module.exports = router;
