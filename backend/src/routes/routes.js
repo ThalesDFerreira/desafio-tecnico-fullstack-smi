@@ -5,6 +5,7 @@ const {
   getPostsControllers,
   insertPostsControllers,
   updatePostsControllers,
+  deletePostsControllers,
 } = require('../controllers/postsControllers');
 
 const {
@@ -28,6 +29,6 @@ router.get('/', (req, res) => {
 router.get('/posts', getPostsControllers);
 router.post('/posts', bodyInsertPostsValidation, insertPostsControllers);
 router.put('/posts', bodyUpdatePostsValidation, updatePostsControllers);
-// router.delete('/posts', deletePostsControllers);
+router.delete('/posts', deletePostsControllers);
 
 module.exports = router;

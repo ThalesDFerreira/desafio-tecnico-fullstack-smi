@@ -23,8 +23,16 @@ const updatePostsServices = async (req) => {
   return updatePosts;
 };
 
+const deletePostsServices = async (req) => {
+  const db = await openDb();
+  const deletePosts = await db.get('DELETE FROM posts WHERE id=?', [req.query.id]);
+  await db.close();
+  return deletePosts;
+};
+
 module.exports = {
   getPostsServices,
   insertPostsServices,
   updatePostsServices,
+  deletePostsServices,
 };

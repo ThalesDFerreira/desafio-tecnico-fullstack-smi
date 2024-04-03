@@ -3,6 +3,7 @@ const {
   getPostsServices,
   insertPostsServices,
   updatePostsServices,
+  deletePostsServices,
 } = require('../services/postsServices');
 
 const getPostsControllers = async (req, res) => {
@@ -35,10 +36,19 @@ const updatePostsControllers = async (req, res) => {
   }
 };
 
-
+const deletePostsControllers = async (req, res) => {
+  try {
+    const deletePosts = await deletePostsServices(req);
+    return res.status(status.OK).json(deletePosts);
+  } catch (error) {
+    console.log(error);
+    return res.status(status.BAD_REQUEST).json({ erro: error.message });
+  }
+};
 
 module.exports = {
   getPostsControllers,
   insertPostsControllers,
   updatePostsControllers,
+  deletePostsControllers,
 };
