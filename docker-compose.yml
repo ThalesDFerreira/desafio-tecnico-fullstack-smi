@@ -4,13 +4,13 @@ services:
     container_name: frontend
     build: ./frontend
     ports:
-      - 8080:8080
+      - 3000:3000
     platform: linux/x86_64
     working_dir: /frontend
     # Os `healthcheck` devem garantir que a aplicação
     # está operacional, antes de liberar o container
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:8080"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
       timeout: 10s
       retries: 5
   backend:

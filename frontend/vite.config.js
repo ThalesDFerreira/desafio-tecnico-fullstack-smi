@@ -24,7 +24,7 @@ export default defineConfig({
   },
   base: './',
   server: {
-    port: 8080,
+    port: 3000,
     strictPort: true,
     host: true,
     origin: 'http://0.0.0.0:3000',
