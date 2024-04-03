@@ -1,6 +1,6 @@
 FROM node:16.14-alpine
 
-EXPOSE 5173
+EXPOSE 3000
 
 WORKDIR /frontend
 

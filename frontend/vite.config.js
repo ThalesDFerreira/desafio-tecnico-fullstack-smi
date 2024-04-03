@@ -2,16 +2,31 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/',
   plugins: [react()],
+  build: {
+    outDir: './dist',
+  },
   preview: {
-    port: 8080,
+    port: 3000,
     strictPort: true,
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        ".js": "jsx",
+      },
+    },
+  },
+  esbuild: {
+    loader: "jsx",
+    include: /\/src\/.*\.js$/,
+    exclude: [],
+  },
+  base: './',
   server: {
     port: 8080,
     strictPort: true,
     host: true,
-    origin: 'http://0.0.0.0:8080',
+    origin: 'http://0.0.0.0:3000',
   },
 });
