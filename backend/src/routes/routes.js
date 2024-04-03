@@ -1,10 +1,5 @@
 const router = require('express').Router();
-const express = require('express');
 const status = require('http-status');
-
-const {
-  getPostsControllers,
-} = require('../controllers/postsControllers');
 
 router.get('/', (req, res) => {
   try {
@@ -18,8 +13,8 @@ router.get('/', (req, res) => {
   }
 });
 
-// ROTAS Demandas da empresa "Latinhas LLC".
-router.get('/posts', getPostsControllers);
+// ROTAS DE DEMANDAS "LATINHAS LLC".
+// router.get('/posts', getPostsControllers);
 // router.post('/posts', bodyPostsValidation, insertPostsControllers);
 // router.put('/posts', bodyPostsValidation, editPostsControllers);
 // router.delete('/posts', deletePostsControllers);
