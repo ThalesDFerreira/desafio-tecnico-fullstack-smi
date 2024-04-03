@@ -1,4 +1,6 @@
-FROM node:16.14-alpine
+FROM node:21-alpine3.18
+
+EXPOSE 3001
 
 WORKDIR /backend
 
