@@ -8,7 +8,7 @@ const Header = () => {
   };
 
   return (
-    <div className='bg-gray-800 text-white p-4 flex justify-center'>
+    <div className='bg-neutral-800 text-white p-4 flex justify-center'>
       <button type='button' onClick={onClickChange}>
         <h1 className='text-2xl font-bold'>
           Sistema de planejamento de Demandas
