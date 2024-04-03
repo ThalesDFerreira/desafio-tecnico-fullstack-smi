@@ -6,10 +6,6 @@ export default defineConfig({
   build: {
     outDir: './dist',
   },
-  preview: {
-    port: 3000,
-    strictPort: true,
-  },
   optimizeDeps: {
     esbuildOptions: {
       loader: {
@@ -23,6 +19,10 @@ export default defineConfig({
     exclude: [],
   },
   base: './',
+  preview: {
+    port: 3000,
+    strictPort: true,
+  },
   server: {
     port: 3000,
     strictPort: true,
