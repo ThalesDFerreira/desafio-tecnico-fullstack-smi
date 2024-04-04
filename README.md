@@ -45,9 +45,9 @@ Este comando ativa o container da aplicação.
 
 4. Aguarde até que o processo de criação do container seja concluído. Em seguida, você poderá acessar o frontend e o backend:
 
-Frontend: [Texto do Link](http://localhost:3000/)
+Frontend: [http://localhost:3000/](http://localhost:3000/)
 
-Backend: [Texto do Link](http://localhost:3001/)
+Backend: [http://localhost:3001/](http://localhost:3001/)
 
 5. Após concluir a análise funcional do software, você pode derrubar os containers criados utilizando o comando:
 
