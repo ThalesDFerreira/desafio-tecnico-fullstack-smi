@@ -12,37 +12,43 @@ const getPostsControllers = async (req, res) => {
     return res.status(status.OK).json(getPosts);
   } catch (error) {
     console.log(error);
-    return res.status(status.BAD_REQUEST).json({ erro: error.message });
+    return res.status(status.BAD_REQUEST).json({ message: error.message });
   }
 };
 
 const insertPostsControllers = async (req, res) => {
   try {
-    const insertPosts = await insertPostsServices(req);
-    return res.status(status.OK).json(insertPosts);
+    await insertPostsServices(req);
+    return res
+      .status(status.OK)
+      .json({ message: '✔️ Demanda inserida com sucesso!' });
   } catch (error) {
     console.log(error);
-    return res.status(status.BAD_REQUEST).json({ erro: error.message });
+    return res.status(status.BAD_REQUEST).json({ message: error.message });
   }
 };
 
 const updatePostsControllers = async (req, res) => {
   try {
-    const updatePosts = await updatePostsServices(req);
-    return res.status(status.OK).json(updatePosts);
+    await updatePostsServices(req);
+    return res
+      .status(status.OK)
+      .json({ message: '✔️ Demanda alterada com sucesso!' });
   } catch (error) {
     console.log(error);
-    return res.status(status.BAD_REQUEST).json({ erro: error.message });
+    return res.status(status.BAD_REQUEST).json({ message: error.message });
   }
 };
 
 const deletePostsControllers = async (req, res) => {
   try {
-    const deletePosts = await deletePostsServices(req);
-    return res.status(status.OK).json(deletePosts);
+    await deletePostsServices(req);
+    return res
+      .status(status.OK)
+      .json({ message: '✔️ Demanda deletada com sucesso!' });
   } catch (error) {
     console.log(error);
-    return res.status(status.BAD_REQUEST).json({ erro: error.message });
+    return res.status(status.BAD_REQUEST).json({ message: error.message });
   }
 };
 

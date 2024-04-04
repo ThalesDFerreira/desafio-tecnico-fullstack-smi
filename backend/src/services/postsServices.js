@@ -18,14 +18,19 @@ const insertPostsServices = async (req) => {
 
 const updatePostsServices = async (req) => {
   const db = await openDb();
-  const updatePosts = await db.run('UPDATE posts SET demand=? WHERE id=?', [req.body.demand, req.body.id]);
+  const updatePosts = await db.run('UPDATE posts SET demand=? WHERE id=?', [
+    req.body.demand,
+    req.body.id,
+  ]);
   await db.close();
   return updatePosts;
 };
 
 const deletePostsServices = async (req) => {
   const db = await openDb();
-  const deletePosts = await db.get('DELETE FROM posts WHERE id=?', [req.query.id]);
+  const deletePosts = await db.get('DELETE FROM posts WHERE id=?', [
+    req.query.id,
+  ]);
   await db.close();
   return deletePosts;
 };

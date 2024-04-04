@@ -13,7 +13,6 @@ app.use(cors());
 // Cria-se a tabela no banco de dados caso não exista.
 createTable();
 
-
 //rotas
 app.use(routes);
 
