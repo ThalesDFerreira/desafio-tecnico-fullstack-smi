@@ -3,7 +3,7 @@
 
 # Desafio Técnico FullStack SMI
 
-Este projeto foi desenvolvido como parte de um desafio técnico para a empresa SMI. Ele consiste em um sistema de planejamento de demandas para a empresa "La8nhas LLC", permitindo o cadastro, edição e exclusão de demandas, além de listagem e filtragem (CRUD completo).
+Este projeto foi desenvolvido como parte de um desafio técnico para a empresa SMI. Ele consiste em um sistema de planejamento de demandas para a empresa "Latinhas LLC", permitindo o cadastro, edição e exclusão de demandas, além de listagem e filtragem (CRUD completo).
 
 ## Pré-requisitos
 
