@@ -7,6 +7,8 @@ services:
       - 3000:3000
     platform: linux/x86_64
     working_dir: /frontend
+    environment:
+      - VITE_REACT_APP_API_PORT=http://localhost:3001
     # Os `healthcheck` devem garantir que a aplicação
     # está operacional, antes de liberar o container
     healthcheck:
