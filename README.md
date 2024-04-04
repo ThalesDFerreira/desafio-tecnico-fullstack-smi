@@ -17,35 +17,38 @@ Para executar este projeto, você precisará ter instalado em seu sistema:
 1. Clone o projeto utilizando uma das opções abaixo:
 
    HTTPS - `https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
-   bash
+   ```bash
    git clone https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git
+   ```
 
    SSH - `git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
-   bash
+   ```bash
    git clone git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git
+   ```
    
 3. Navegue até o diretório do projeto:
 
    ```bash
    cd desafio-tecnico-fullstack-smi
+   ```
 
 4. Execute o seguinte comando no terminal:
 
-bash
-Copy code
+```bash
 docker-compose up -d
+```
 Este comando ativa o container da aplicação.
 
 4. Aguarde até que o processo de criação do container seja concluído. Em seguida, você poderá acessar o frontend e o backend:
 
-Frontend: http://localhost:3000/
-Backend: http://localhost:3001/
+Frontend: ```http://localhost:3000/```
+Backend: ```http://localhost:3001/```
 
 5. Após concluir a análise funcional do software, você pode derrubar os containers criados utilizando o comando:
 
-bash
-Copy code
+```bash
 docker-compose down
+```
 Este comando desativa o container da aplicação.
 
 **A título de curiosidade, o Banco de Dados foi criado utilizando SQLite.**
