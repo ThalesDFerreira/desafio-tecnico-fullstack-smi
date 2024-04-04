@@ -17,14 +17,19 @@ Para executar este projeto, você precisará ter instalado em seu sistema:
 1. Clone o projeto utilizando uma das opções abaixo:
 
    HTTPS - `https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
+   ```bash
+   git clone https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git
    
    SSH - `git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
+   ```bash
+   git clone git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git
    
-2. Navegue até o diretório do projeto:
+3. Navegue até o diretório do projeto:
 
    ```bash
    cd desafio-tecnico-fullstack-smi
-3. Execute o seguinte comando no terminal:
+
+4. Execute o seguinte comando no terminal:
 
 bash
 Copy code
