@@ -27,13 +27,13 @@ const Home = () => {
                 onClick={redirectAddDemand}
                 className='bg-neutral-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
               >
-                Cadastrar Clientes
+                Cadastrar Demandas
               </button>
               <button
                 onClick={redirectListDemands}
                 className='bg-neutral-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
               >
-                Listar Clientes
+                Listar Demandas
               </button>
             </div>
           </div>
