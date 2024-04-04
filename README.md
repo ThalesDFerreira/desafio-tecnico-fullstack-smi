@@ -16,23 +16,27 @@ Para executar este projeto, você precisará ter instalado em seu sistema:
 
 1. Clone o projeto utilizando uma das opções abaixo:
 
-   HTTPS - `https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
-   ```bash
-   git clone https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git
-   ```
+Abra o ternminal Bash e clone o plojeto.
 
-   SSH - `git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
-   ```bash
-   git clone git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git
-   ```
-   
-3. Navegue até o diretório do projeto:
+HTTPS - `https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
+```bash
+git clone https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi.git
+```
 
-   ```bash
-   cd desafio-tecnico-fullstack-smi
-   ```
+SSH - `git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git`
+```bash
+git clone git@github.com:ThalesDFerreira/desafio-tecnico-fullstack-smi.git
+ ```
 
-4. Execute o seguinte comando no terminal:
+
+2. Navegue até o diretório do projeto:
+
+```bash
+cd desafio-tecnico-fullstack-smi
+```
+Com esse comando você entrará no diretório do projeto.
+
+3. Execute o seguinte comando no terminal:
 
 ```bash
 docker-compose up -d
@@ -41,8 +45,9 @@ Este comando ativa o container da aplicação.
 
 4. Aguarde até que o processo de criação do container seja concluído. Em seguida, você poderá acessar o frontend e o backend:
 
-Frontend: ```http://localhost:3000/```
-Backend: ```http://localhost:3001/```
+Frontend: [Texto do Link](http://localhost:3000/)
+
+Backend: [Texto do Link](http://localhost:3001/)
 
 5. Após concluir a análise funcional do software, você pode derrubar os containers criados utilizando o comando:
 
