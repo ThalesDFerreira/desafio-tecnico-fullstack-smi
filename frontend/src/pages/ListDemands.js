@@ -74,7 +74,9 @@ const ListDemands = () => {
         (post) => post.demand === demandUpdate
       );
 
-      if (filterPostId[0].demand === demandUpdate) {
+      if (!demandUpdate) {
+        return toast.error('⚠️ Demanda não estar vazia!');
+      } else if (filterPostId[0].demand === demandUpdate) {
         return toast.error('⚠️ Demanda não alterada!');
       } else if (filterListPosts) {
         return toast.error('⚠️ Demanda já existe!');
