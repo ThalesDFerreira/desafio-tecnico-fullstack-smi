@@ -47,7 +47,7 @@ const AddDemand = () => {
               <div className='overflow-x-auto'>
                 <div className='inline-block min-w-full py-2'>
                   <div className='overflow-hidden'>
-                    <table className='table-msn min-w-full text-center text-sm font-light md:text-lg'>
+                    <table className='min-w-full text-center text-sm font-light md:text-lg'>
                       <thead className='bg-neutral-800 bg-opacity-40 font-medium text-slate-100'>
                         <tr>
                           <th scope='col' className='px-2 py-2'>
@@ -73,7 +73,7 @@ const AddDemand = () => {
                           </td>
                           <td className='whitespace-nowrap px-2 py-2 flex justify-center'>
                             <button
-                              className='btn-entrar text-center mb-2 bg-blue-400 hover:bg-blue-600 text-slate-100 p-2 w-20 flex justify-center rounded-xl font-bold'
+                              className='text-center mb-2 bg-blue-400 hover:bg-blue-600 text-slate-100 p-2 w-20 flex justify-center rounded-xl font-bold'
                               type='button'
                               onClick={btnRequestInsertPosts}
                             >
