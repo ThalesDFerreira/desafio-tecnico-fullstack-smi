@@ -6,8 +6,6 @@ export default {
       colors: {
         rgb: {
           preto: '#000000',
-          cinza: '#767f7c',
-          vermelho: '#ff693e',
         },
       },
     },

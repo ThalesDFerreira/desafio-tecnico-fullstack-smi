@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -9,12 +10,12 @@ export default defineConfig({
   optimizeDeps: {
     esbuildOptions: {
       loader: {
-        ".js": "jsx",
+        '.js': 'jsx',
       },
     },
   },
   esbuild: {
-    loader: "jsx",
+    loader: 'jsx',
     include: /\/src\/.*\.js$/,
     exclude: [],
   },
@@ -28,5 +29,15 @@ export default defineConfig({
     strictPort: true,
     host: true,
     // origin: 'http://0.0.0.0:3000',
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    css: false,
+    server: {
+      deps: {
+        fallbackCJS: true,
+      },
+    },
   },
 });
