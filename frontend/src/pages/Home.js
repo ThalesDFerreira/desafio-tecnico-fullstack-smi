@@ -23,18 +23,22 @@ const Home = () => {
               Bem-vindo ao Sistema de planejamento de Demandas
             </h1>
             <div className='flex justify-center space-x-10 mt-20'>
-              <button
-                onClick={redirectAddDemand}
-                className='bg-neutral-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-              >
-                Cadastrar Demandas
-              </button>
-              <button
-                onClick={redirectListDemands}
-                className='bg-neutral-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
-              >
-                Listar Demandas
-              </button>
+              <div>
+                <button
+                  onClick={redirectAddDemand}
+                  className='bg-neutral-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                >
+                  Cadastrar Demandas
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={redirectListDemands}
+                  className='bg-neutral-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+                >
+                  Listar Demandas
+                </button>
+              </div>
             </div>
           </div>
         </main>
