@@ -82,6 +82,8 @@ const AddDemand = () => {
                         <tr>
                           <td className='whitespace-nowrap px-2 py-2 font-medium'>
                             <select
+                              id='select-add-priority'
+                              name='select-add-priority'
                               className='py-1 text-black rounded-md w-24 md:w-full'
                               onChange={({ target: { value } }) =>
                                 setOptionsPriority(value)
@@ -102,6 +104,8 @@ const AddDemand = () => {
                           </td>
                           <td className='whitespace-nowrap px-2 py-2 font-medium'>
                             <input
+                              id='input-add-demand'
+                              name='input-add-demand'
                               className='p-1 text-black rounded-md w-full'
                               type='text'
                               onChange={({ target: { value } }) =>
@@ -113,15 +117,17 @@ const AddDemand = () => {
                           </td>
                           <td className='whitespace-nowrap px-2 py-2 font-medium'>
                             <select
+                              id='select-add-status'
+                              name='select-add-status'
                               className='py-1 text-black rounded-md w-24 md:w-full'
                               onChange={({ target: { value } }) =>
                                 setOptionsStatus(value)
                               }
                               value={optionsStatus}
                             >
-                              <option value='1'>Não realizada</option>
+                              <option value='1'>Não realizado</option>
                               <option value='2'>Em andamento</option>
-                              <option value='3'>Finalizada</option>
+                              <option value='3'>Finalizado</option>
                             </select>
                           </td>
                           <td className='whitespace-nowrap px-2 py-2 flex justify-center'>

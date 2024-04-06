@@ -17,7 +17,7 @@ const ListDemands = () => {
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [postSelectedEdit, setPostSelectedEdit] = useState('');
   const [demandUpdate, setDemandUpdate] = useState('');
-  const [optionsFindPosts, setOptionsFindPosts] = useState('demanda');
+  const [optionsFindPosts, setOptionsFindPosts] = useState('demand');
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [postSelectedDelete, setPostSelectedDelete] = useState('');
 
@@ -120,7 +120,7 @@ const ListDemands = () => {
     const valueInput = target.value;
     let newArray = [];
     const arraySearch = [...listPostsClone];
-    if (optionsFindPosts === 'demanda' && valueInput !== '') {
+    if (optionsFindPosts === 'demand' && valueInput !== '') {
       for (let index = 0; index < arraySearch.length; index += 1) {
         const element = arraySearch[index];
         if (
@@ -133,14 +133,48 @@ const ListDemands = () => {
       setListPosts(newArray);
     }
 
+    if (optionsFindPosts === 'priority' && valueInput !== '') {
+      for (let index = 0; index < arraySearch.length; index += 1) {
+        const element = arraySearch[index];
+
+        if (element.priority === Number(valueInput)) {
+          newArray.push(element);
+        }
+      }
+      setListPosts(newArray);
+    }
+
+    if (optionsFindPosts === 'status' && valueInput !== '') {
+      for (let index = 0; index < arraySearch.length; index += 1) {
+        const element = arraySearch[index];
+        if (element.status === Number(valueInput)) {
+          newArray.push(element);
+        }
+      }
+      setListPosts(newArray);
+    }
+
     if (valueInput === '') {
       setListPosts(listPostsClone);
     }
   };
 
+  const btnLoadListFull = () => {
+    setListPosts(listPostsClone);
+  };
+
   useEffect(() => {
     getPosts();
   }, []);
+
+  const verifyStatus = (post) => {
+    if (post.status === 1) {
+      return 'Não realizado';
+    } else if (post.status === 2) {
+      return 'Em andamento';
+    }
+    return 'Finalizado';
+  };
 
   return (
     <>
@@ -160,24 +194,72 @@ const ListDemands = () => {
                   <div>
                     <select
                       id='select-filter-demand'
+                      name='select-filter-demand'
                       className='py-1 text-black rounded-md w-24 md:w-full'
                       onChange={({ target: { value } }) =>
                         setOptionsFindPosts(value)
                       }
                       value={optionsFindPosts}
                     >
-                      <option value='demanda'>Demanda</option>
+                      <option value='priority'>Prioridade</option>
+                      <option value='demand'>Demanda</option>
+                      <option value='status'>Status</option>
                     </select>
                   </div>
                 </div>
                 <div>
-                  <input
-                    className='py-1 text-black rounded-md w-24 md:w-full'
-                    name='input-filter-demand'
-                    type='text'
-                    placeholder='Pesquise aqui ...'
-                    onChange={inputSearchPosts}
-                  />
+                  {optionsFindPosts === 'demand' && (
+                    <input
+                      className='py-1 text-black rounded-md w-24 md:w-full'
+                      id='input-filter-demand'
+                      name='input-filter-demand'
+                      type='text'
+                      placeholder='Pesquise aqui ...'
+                      onChange={inputSearchPosts}
+                    />
+                  )}
+                  {optionsFindPosts === 'priority' && (
+                    <select
+                      id='select-filter-priority'
+                      name='select-filter-priority'
+                      className='py-1 text-black rounded-md w-24 md:w-full'
+                      onChange={inputSearchPosts}
+                    >
+                      <option value='1'>1</option>
+                      <option value='2'>2</option>
+                      <option value='3'>3</option>
+                      <option value='4'>4</option>
+                      <option value='5'>5</option>
+                      <option value='6'>6</option>
+                      <option value='7'>7</option>
+                      <option value='8'>8</option>
+                      <option value='9'>9</option>
+                      <option value='10'>10</option>
+                    </select>
+                  )}
+                  {optionsFindPosts === 'status' && (
+                    <select
+                      id='select-filter-status'
+                      name='select-filter-status'
+                      className='py-1 text-black rounded-md w-24 md:w-full'
+                      onChange={inputSearchPosts}
+                    >
+                      <option value='1'>Não realizado</option>
+                      <option value='2'>Em andamento</option>
+                      <option value='3'>Finalizado</option>
+                    </select>
+                  )}
+                </div>
+                <div>
+                  {optionsFindPosts !== 'demand' && (
+                    <button
+                      className='bg-neutral-800 hover:bg-blue-700 ml-3 text-white text-xs font-bold py-2 px-2 rounded'
+                      type='button'
+                      onClick={btnLoadListFull}
+                    >
+                      Voltar lista completa
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -189,10 +271,13 @@ const ListDemands = () => {
                       <thead className='bg-neutral-800 bg-opacity-40 font-medium text-slate-100'>
                         <tr>
                           <th scope='col' className='px-2 py-2'>
-                            Número
+                            Prioridade
                           </th>
                           <th scope='col' className='px-2 py-2'>
                             Demanda
+                          </th>
+                          <th scope='col' className='px-2 py-2'>
+                            Status
                           </th>
                           <th scope='col' className='px-2 py-2'>
                             Editar
@@ -210,14 +295,13 @@ const ListDemands = () => {
                               key={`radio-form-${post.id}`}
                             >
                               <td className='whitespace-nowrap px-2 py-2'>
-                                <label htmlFor={`radio-${post.id}`}>
-                                  {post.id}
-                                </label>
+                                <span>{post.priority}</span>
                               </td>
                               <td className='whitespace-normal px-2 py-2'>
-                                <label htmlFor={`radio-${post.id}`}>
-                                  {post.demand}
-                                </label>
+                                <span>{post.demand}</span>
+                              </td>
+                              <td className='whitespace-nowrap px-2 py-2'>
+                                <span>{verifyStatus(post)}</span>
                               </td>
                               <td className='whitespace-nowrap px-2 py-2'>
                                 <button
@@ -266,6 +350,8 @@ const ListDemands = () => {
                     <tr>
                       <td>
                         <input
+                          id='input-edit-demand'
+                          name='input-edit-demand'
                           className='text-center p-1 text-black rounded-md bg-gray-200 w-full'
                           type='text'
                           onChange={({ target: { value } }) =>
