@@ -1,5 +1,5 @@
 
-![Animação](https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi/assets/99926224/a161bd6a-2201-4e7a-9fa2-4de10e3f7fda)
+![Projeto](https://github.com/ThalesDFerreira/desafio-tecnico-fullstack-smi/assets/99926224/c9ee7b90-ba41-4056-acb0-98b5cd3144ed)
 
 # Desafio Técnico FullStack SMI
 
