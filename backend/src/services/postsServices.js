@@ -9,8 +9,10 @@ const getPostsServices = async () => {
 
 const insertPostsServices = async (req) => {
   const db = await openDb();
-  const insertPosts = await db.run('INSERT INTO posts(demand) VALUES (?)', [
+  const insertPosts = await db.run('INSERT INTO posts(priority, demand, status) VALUES (?, ?, ?)', [
+    req.body.priority,
     req.body.demand,
+    req.body.status,
   ]);
   await db.close();
   return insertPosts;
@@ -18,8 +20,10 @@ const insertPostsServices = async (req) => {
 
 const updatePostsServices = async (req) => {
   const db = await openDb();
-  const updatePosts = await db.run('UPDATE posts SET demand=? WHERE id=?', [
+  const updatePosts = await db.run('UPDATE posts SET priority=?, demand=?, status=? WHERE id=?', [
+    req.body.priority,
     req.body.demand,
+    req.body.status,
     req.body.id,
   ]);
   await db.close();

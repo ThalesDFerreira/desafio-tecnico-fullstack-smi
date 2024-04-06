@@ -12,7 +12,12 @@ const createTable = async () => {
   try {
     const openDBPromise = await openDb();
     const createTable = await openDBPromise.exec(
-      'CREATE TABLE IF NOT EXISTS posts( id INTEGER PRIMARY KEY AUTOINCREMENT, demand TEXT)'
+      `CREATE TABLE IF NOT EXISTS posts(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        priority INTEGER NOT NULL,
+        demand TEXT NOT NULL,
+        status INTEGER NOT NULL
+    )`
     );
     await openDBPromise.close();
     return createTable;

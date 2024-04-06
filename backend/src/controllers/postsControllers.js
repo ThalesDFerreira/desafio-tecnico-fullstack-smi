@@ -21,7 +21,7 @@ const insertPostsControllers = async (req, res) => {
     await insertPostsServices(req);
     return res
       .status(status.OK)
-      .json({ message: '✔️ Demanda inserida com sucesso!' });
+      .json({ message: 'Demanda inserida com sucesso!' });
   } catch (error) {
     console.log(error);
     return res.status(status.BAD_REQUEST).json({ message: error.message });
@@ -33,7 +33,7 @@ const updatePostsControllers = async (req, res) => {
     await updatePostsServices(req);
     return res
       .status(status.OK)
-      .json({ message: '✔️ Demanda alterada com sucesso!' });
+      .json({ message: 'Demanda alterada com sucesso!' });
   } catch (error) {
     console.log(error);
     return res.status(status.BAD_REQUEST).json({ message: error.message });
@@ -45,7 +45,7 @@ const deletePostsControllers = async (req, res) => {
     await deletePostsServices(req);
     return res
       .status(status.OK)
-      .json({ message: '✔️ Demanda deletada com sucesso!' });
+      .json({ message: 'Demanda deletada com sucesso!' });
   } catch (error) {
     console.log(error);
     return res.status(status.BAD_REQUEST).json({ message: error.message });
