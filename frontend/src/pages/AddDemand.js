@@ -4,30 +4,44 @@ import toast from 'react-hot-toast';
 import Header from '../components/Header';
 
 const AddDemand = () => {
+  const [optionsPriority, setOptionsPriority] = useState('1'); // A escala de prioridade vai de 1 até 10
   const [demand, setDemand] = useState('');
+  const [optionsStatus, setOptionsStatus] = useState('1'); // status=1 (Não realizada); status=2 (Em andamento); status=3 (Finalizada);
 
   const btnRequestInsertPosts = async () => {
     try {
       const getPosts = await requestGet('/posts');
-      const result = await getPosts.every((post) => post.demand !== demand);
+      const verifyPostsNoEqual = await getPosts.every(
+        (post) => post.demand !== demand
+      );
 
       if (!demand) {
         toast.error('⚠️ O campo "Demanda" não pode estar vazio!');
       } else if (getPosts.length === 0) {
         const result = await requestPost('/posts', {
+          priority: Number(optionsPriority),
           demand: demand,
+          status: Number(optionsStatus),
         });
         toast.success(result.message);
+        setOptionsPriority('1');
         setDemand('');
-      } else if (result) {
+        setOptionsStatus('1');
+      } else if (verifyPostsNoEqual) {
         const result = await requestPost('/posts', {
+          priority: Number(optionsPriority),
           demand: demand,
+          status: Number(optionsStatus),
         });
         toast.success(result.message);
+        setOptionsPriority('1');
         setDemand('');
+        setOptionsStatus('1');
       } else {
         toast.error('⚠️ Demanda já cadastrada!');
+        setOptionsPriority('1');
         setDemand('');
+        setOptionsStatus('1');
       }
     } catch (error) {
       toast.error(error.message);
@@ -51,7 +65,13 @@ const AddDemand = () => {
                       <thead className='bg-neutral-800 bg-opacity-40 font-medium text-slate-100'>
                         <tr>
                           <th scope='col' className='px-2 py-2'>
+                            Prioridade
+                          </th>
+                          <th scope='col' className='px-2 py-2'>
                             Demanda
+                          </th>
+                          <th scope='col' className='px-2 py-2'>
+                            Status
                           </th>
                           <th scope='col' className='px-2 py-2'>
                             Cadastrar
@@ -60,6 +80,26 @@ const AddDemand = () => {
                       </thead>
                       <tbody className='break-all'>
                         <tr>
+                          <td className='whitespace-nowrap px-2 py-2 font-medium'>
+                            <select
+                              className='py-1 text-black rounded-md w-24 md:w-full'
+                              onChange={({ target: { value } }) =>
+                                setOptionsPriority(value)
+                              }
+                              value={optionsPriority}
+                            >
+                              <option value='1'>1</option>
+                              <option value='2'>2</option>
+                              <option value='3'>3</option>
+                              <option value='4'>4</option>
+                              <option value='5'>5</option>
+                              <option value='6'>6</option>
+                              <option value='7'>7</option>
+                              <option value='8'>8</option>
+                              <option value='9'>9</option>
+                              <option value='10'>10</option>
+                            </select>
+                          </td>
                           <td className='whitespace-nowrap px-2 py-2 font-medium'>
                             <input
                               className='p-1 text-black rounded-md w-full'
@@ -70,6 +110,19 @@ const AddDemand = () => {
                               value={demand}
                               placeholder='Digite aqui ...'
                             />
+                          </td>
+                          <td className='whitespace-nowrap px-2 py-2 font-medium'>
+                            <select
+                              className='py-1 text-black rounded-md w-24 md:w-full'
+                              onChange={({ target: { value } }) =>
+                                setOptionsStatus(value)
+                              }
+                              value={optionsStatus}
+                            >
+                              <option value='1'>Não realizada</option>
+                              <option value='2'>Em andamento</option>
+                              <option value='3'>Finalizada</option>
+                            </select>
                           </td>
                           <td className='whitespace-nowrap px-2 py-2 flex justify-center'>
                             <button
