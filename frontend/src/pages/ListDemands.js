@@ -16,7 +16,9 @@ const ListDemands = () => {
   const [existPosts, setExistPosts] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [postSelectedEdit, setPostSelectedEdit] = useState('');
+  const [priorityUpdate, setPriorityUpdate] = useState('');
   const [demandUpdate, setDemandUpdate] = useState('');
+  const [statusUpdate, setStatusUpdate] = useState('');
   const [optionsFindPosts, setOptionsFindPosts] = useState('demand');
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [postSelectedDelete, setPostSelectedDelete] = useState('');
@@ -41,9 +43,11 @@ const ListDemands = () => {
     }
   };
 
-  const handleOpenModalEdit = (id, demand) => {
+  const handleOpenModalEdit = (id, priority, demand, status) => {
     setPostSelectedEdit(id);
+    setPriorityUpdate(priority);
     setDemandUpdate(demand);
+    setStatusUpdate(status);
     setOpenModalEdit(true);
   };
 
@@ -62,10 +66,6 @@ const ListDemands = () => {
 
   const btnRequestEditPost = async () => {
     try {
-      const filterPostId = listPosts.filter(
-        (post) => post.id === postSelectedEdit
-      );
-
       const filterRemoveIdList = listPosts.filter(
         (post) => post.id !== postSelectedEdit
       );
@@ -76,17 +76,19 @@ const ListDemands = () => {
 
       if (!demandUpdate) {
         return toast.error('⚠️ Demanda não estar vazia!');
-      } else if (filterPostId[0].demand === demandUpdate) {
-        return toast.error('⚠️ Demanda não alterada!');
       } else if (filterListPosts) {
         return toast.error('⚠️ Demanda já existe!');
       } else {
         const result = await requestPut('/posts', {
           id: Number(postSelectedEdit),
+          priority: Number(priorityUpdate),
           demand: demandUpdate,
+          status: Number(statusUpdate),
         });
         getPosts();
+        setPriorityUpdate('');
         setDemandUpdate('');
+        setStatusUpdate('');
         toast.success(result.message);
         handleCloseModalEdit();
       }
@@ -272,6 +274,7 @@ const ListDemands = () => {
                         <tr>
                           <th scope='col' className='px-2 py-2'>
                             Prioridade
+                            <p className='text-xs'>0 (baixa) até 10 (alta)</p>
                           </th>
                           <th scope='col' className='px-2 py-2'>
                             Demanda
@@ -308,7 +311,12 @@ const ListDemands = () => {
                                   className='bg-gray-200 hover:bg-gray-400 p-1 rounded-xl'
                                   type='button'
                                   onClick={() =>
-                                    handleOpenModalEdit(post.id, post.demand)
+                                    handleOpenModalEdit(
+                                      post.id,
+                                      post.priority,
+                                      post.demand,
+                                      post.status
+                                    )
                                   }
                                 >
                                   <img src={Editar} alt='Editar' />
@@ -349,6 +357,28 @@ const ListDemands = () => {
                   <tbody className='break-all'>
                     <tr>
                       <td>
+                        <select
+                          id='select-edit-priority'
+                          name='select-edit-priority'
+                          className='py-1 text-black rounded-md w-24 md:w-full'
+                          onChange={({ target: { value } }) =>
+                            setPriorityUpdate(value)
+                          }
+                          value={priorityUpdate}
+                        >
+                          <option value='1'>1</option>
+                          <option value='2'>2</option>
+                          <option value='3'>3</option>
+                          <option value='4'>4</option>
+                          <option value='5'>5</option>
+                          <option value='6'>6</option>
+                          <option value='7'>7</option>
+                          <option value='8'>8</option>
+                          <option value='9'>9</option>
+                          <option value='10'>10</option>
+                        </select>
+                      </td>
+                      <td>
                         <input
                           id='input-edit-demand'
                           name='input-edit-demand'
@@ -360,6 +390,21 @@ const ListDemands = () => {
                           value={demandUpdate}
                           placeholder='Digite aqui ...'
                         />
+                      </td>
+                      <td>
+                        <select
+                          id='select-filter-status'
+                          name='select-filter-status'
+                          className='py-1 text-black rounded-md w-24 md:w-full'
+                          onChange={({ target: { value } }) =>
+                            setStatusUpdate(value)
+                          }
+                          value={statusUpdate}
+                        >
+                          <option value='1'>Não realizado</option>
+                          <option value='2'>Em andamento</option>
+                          <option value='3'>Finalizado</option>
+                        </select>
                       </td>
                     </tr>
                   </tbody>

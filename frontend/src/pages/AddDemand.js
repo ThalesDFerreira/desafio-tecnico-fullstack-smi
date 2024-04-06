@@ -66,6 +66,7 @@ const AddDemand = () => {
                         <tr>
                           <th scope='col' className='px-2 py-2'>
                             Prioridade
+                            <p className='text-xs'>0 (baixa) até 10 (alta)</p>
                           </th>
                           <th scope='col' className='px-2 py-2'>
                             Demanda
