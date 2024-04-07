@@ -70,8 +70,6 @@ const ListDemands = () => {
         (post) => post.id === postSelectedEdit
       );
 
-      console.log(filterIdList[0].demand);
-
       const filterRemoveIdList = listPosts.filter(
         (post) => post.id !== postSelectedEdit
       );
