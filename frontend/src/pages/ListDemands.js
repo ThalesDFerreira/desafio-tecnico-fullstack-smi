@@ -66,6 +66,12 @@ const ListDemands = () => {
 
   const btnRequestEditPost = async () => {
     try {
+      const filterIdList = listPosts.filter(
+        (post) => post.id === postSelectedEdit
+      );
+
+      console.log(filterIdList[0].demand);
+
       const filterRemoveIdList = listPosts.filter(
         (post) => post.id !== postSelectedEdit
       );
@@ -76,6 +82,12 @@ const ListDemands = () => {
 
       if (!demandUpdate) {
         return toast.error('⚠️ Demanda não estar vazia!');
+      } else if (
+        filterIdList[0].priority === Number(priorityUpdate) &&
+        filterIdList[0].demand === demandUpdate &&
+        filterIdList[0].status === Number(statusUpdate)
+      ) {
+        return toast.error('⚠️ Demanda não alterada!');
       } else if (filterListPosts) {
         return toast.error('⚠️ Demanda já existe!');
       } else {
